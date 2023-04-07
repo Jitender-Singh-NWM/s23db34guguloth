@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  h1= title
+   
+
+   
+  
+  -var results=[];
+  -var Dog={};
+  -Dog.Breed="Pug";
+  -Dog.Dimension="Small";
+  -Dog.value=50;
+  -results.push(Dog);
+  -var Dog1={};
+  -Dog1.Breed="Pomerian";
+  -Dog1.Dimension="Medium";
+  -Dog1.value=25;
+  -results.push(Dog1);
+  -var Dog2={};
+  -Dog2.Breed="Lab";
+  -Dog2.Dimension="Large";
+  -Dog2.value=100;
+  -results.push(Dog2);
+  
+  div(class="container-fluid")
+  div(class="row")
+   each b,index  in results
+    div(class="col-sm-2" onclick =`buy(${index})`) Breed : #{b.Breed}, Size : #{b.Dimension}, Price : #{b.value}
+    script.
+        function buy(a)
+        {
+            alert(`You purchased Item ${a+1}`)
+        } 
+
+
+  // div(class='container-fluid')
+    div(class='row')
+     div(class='Dog1') Dog one Details
+       p Breed #{results[0].Breed}
+       p Size #{results[0].Dimension}
+       p Price #{results[0].value}
+
+     div(class='Dog1') Dog Two Details
+       p Breed #{results[1].Breed}
+       p Size #{results[1].Dimension}
+       p Price #{results[1].value}
+       
+     div(class='Dog1') Dog Two Details
+       p Breed #{results[1].Breed}
+       p Size #{results[1].Dimension}
+       p Price #{results[1].value}  //
+     
+
+
+   //-var list = results
+    //each item in list
+    //div(class='col-sm-2') #{item}
+    
+
+       
