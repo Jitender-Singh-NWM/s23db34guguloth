@@ -28,9 +28,9 @@ exports.dog_list = async function(req, res) {
 
 
 // for a specific Costume.
-exports.dog_detail = function(req, res) {
+/*exports.dog_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: Dog detail: ' + req.params.id);
-};
+};*/
 // Handle Costume create on POST.
 // Handle Costume create on POST.
 exports.dog_create_post = async function(req, res) {
@@ -52,14 +52,62 @@ exports.dog_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+
+   // for a specific Dog.
+exports.dog_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await Dog.findById(req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": dog for id ${req.params.id} not found`);
+    }
+   };
+
+
+   exports.dog_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+   ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await Dog.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.Breed)
+    toUpdate.Breed = req.body.Breed;
+    if(req.body.Dimension) toUpdate.cost = req.body.Dimension;
+    if(req.body.value) toUpdate.value = req.body.value;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+   failed`);
+    }
+   };
+
+
 /*exports.dog_create_post = function(req, res) {
  res.send('NOT IMPLEMENTED: Dog create POST');
 };*/
 // Handle Costume delete form on DELETE.
-exports.dog_delete = function(req, res) {
+
+// Handle Costume delete on DELETE.
+exports.dog_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Dog.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
+/*exports.dog_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: Dog delete DELETE ' + req.params.id);
-};
+};*/
 // Handle Costume update form on PUT.
-exports.dog_update_put = function(req, res) {
+/*exports.dog_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: Dog update PUT' + req.params.id);
-};
+};*/
