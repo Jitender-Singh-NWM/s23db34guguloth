@@ -1,20 +1,23 @@
 extends layout
 block content
  h1= title
- - let costumeid = toShow._id
- - let costume_type = toShow.Breed
- - let costumecost = toShow.value
- - let costumesize = toShow.Dimension
- div
- div.row
- div(class='costumeAttr mr-3') Dog ID is:
- div #{costumeid}
- div.row
- div(class='costumeAttr mr-3') Dog Type is:
- div #{costume_type}
- div.row
- div(class='costumeAttr mr-3') Dog Size is:
- div #{costumesize}
- div.row
- div(class='costumeAttr mr-3') Dog Cost is:
- div #{costumecost}
+ if (toShow == null)
+  h2 No instance to details
+ else
+  - let roadtransportid = toShow._id
+  - let roadtransport_type = toShow.Breed
+  - let roadtransport_name = toShow.Dimension
+  - let roadtransport_cost = toShow.value
+  div
+  div.row
+  div(class='dogAttr mr-3') Dog ID is:
+  div #{roadtransportid}
+  div.row
+  div(class='dogAttr mr-3') Dog Breed is:
+  div #{roadtransport_type}
+  div.row
+  div(class='dogAttr mr-3') Dog Dimension is:
+  div #{roadtransport_name}
+  div.row
+  div(class='dogAttr mr-3') Dog Value is:
+  div #{roadtransport_cost}
