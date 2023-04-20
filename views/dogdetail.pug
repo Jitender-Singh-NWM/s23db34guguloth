@@ -4,20 +4,20 @@ block content
  if (toShow == null)
   h2 No instance to details
  else
-  - let roadtransportid = toShow._id
-  - let roadtransport_type = toShow.Breed
-  - let roadtransport_name = toShow.Dimension
-  - let roadtransport_cost = toShow.value
+  - let dogid = toShow._id
+  - let dogbreed = toShow.Breed
+  - let dogdimension = toShow.Dimension
+  - let dogvalue = toShow.value
   div
   div.row
   div(class='dogAttr mr-3') Dog ID is:
-  div #{roadtransportid}
+  div #{dogid}
   div.row
   div(class='dogAttr mr-3') Dog Breed is:
-  div #{roadtransport_type}
+  div #{dogbreed}
   div.row
   div(class='dogAttr mr-3') Dog Dimension is:
-  div #{roadtransport_name}
+  div #{dogdimension}
   div.row
   div(class='dogAttr mr-3') Dog Value is:
-  div #{roadtransport_cost}
+  div #{dogvalue}
