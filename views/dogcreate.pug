@@ -11,7 +11,7 @@ block content
   div.form-group
    label.dogAttr(for='Dog_value') Dog value
    input#Dog_value(type='number', name='value')
-  input(type="submit")
+  input(class="btn btn-success m-2" type="submit")
  script.
    document.forms['DogForm'].addEventListener('submit', (event) => {
     event.preventDefault();
