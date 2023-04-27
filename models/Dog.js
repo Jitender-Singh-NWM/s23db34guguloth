@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 const dogSchema = mongoose.Schema({
-Breed: String,
+Breed: {
+    type:String,
+    required:[true, 'Breed must have a value']
+    
+    },
 Dimension: String,
 value: {
     type:Number,
