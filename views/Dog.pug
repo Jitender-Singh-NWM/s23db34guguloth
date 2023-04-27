@@ -2,44 +2,41 @@ extends layout
 
 block content
   h1= title
-   
 
-   
-  
   - var results = results
   div(class="container-fluid")
-  div(class="row")
-   each b,index  in results
-    div(class="col-sm-2" onclick =`buy(${index})`) Breed : #{b.Breed}, Size : #{b.Dimension}, Price : #{b.value}
-    script.
-        function buy(a)
-        {
-            alert(`You purchased Item ${a+1}`)
-        } 
+    button.btn(class="btn-primary ml-1", onclick="dispatchcreate()") Create
+    div(class="row m-1")
+      each b, index in results
+        .card(style='width: 18rem;')
+          div(class="col-sm-2", onclick=`buy(${index})`)
+          img.card-img-top(src='/images/bull.jpg' alt='Card image cap')
+          .card-body
+            h5.card-title Breed: #{b.Breed}
+            p.card-text Size: #{b.Dimension}
+            p.card-text Price: #{b.value}<br>
+            - let destination = `dispatch(\"/dog/update?id=${b._id}\")`
+            - let destinationdelete = `dispatch(\"/dog/delete?id=${b._id}\")`
+            button.btn(class="btn-primary ml-1", onclick=destination) Update 
+            br
+            button.btn(class="btn-primary ml-2", onclick=destinationdelete) Delete
+      
+  script.
+    function buy(a) {
+      alert(`You purchased Item ${a+1}`);
+    } 
 
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
 
-  // div(class='container-fluid')
-    div(class='row')
-     div(class='Dog1') Dog one Details
-       p Breed #{results[0].Breed}
-       p Size #{results[0].Dimension}
-       p Price #{results[0].value}
+  script.
+    function dispatchcreate() {
+      window.location.href = 'dog/create';
+    }
 
-     div(class='Dog1') Dog Two Details
-       p Breed #{results[1].Breed}
-       p Size #{results[1].Dimension}
-       p Price #{results[1].value}
-       
-     div(class='Dog1') Dog Two Details
-       p Breed #{results[1].Breed}
-       p Size #{results[1].Dimension}
-       p Price #{results[1].value}  //
-     
-
-
-   //-var list = results
-    //each item in list
-    //div(class='col-sm-2') #{item}
-    
-
-       
+  script.
+    function destinationdelete(path) {
+      window.location.href = path;
+    }

@@ -1,6 +1,6 @@
 extends layout
 block content
- h1(class= 'title')= title
+ h1(class= 'title')
  if (toShow == null)
   h2 No instance to update
  else
@@ -38,6 +38,7 @@ block content
       alert("Update succeded")
       // TODO handle body
       }).catch((error) => {
+        console.log('error',JSON.stringify(error));
       // TODO handle error
       alert("Update failed " + error )
       });

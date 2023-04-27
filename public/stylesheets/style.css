@@ -23,3 +23,145 @@ a {
   color: rgb(242, 237, 237);
   background-color: rgb(122, 131, 233);
  }
+
+ @import "compass/css3"
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500)
+$color-violet: #98f
+$color-green: #1bbc9d
+$color-blue: #3498db
+$color-red: #DB343A
+$color-pink: #E91E63
+
+.color-violet
+  .container-button
+    background-color: $color-violet
+    &:before
+      background-color: $color-violet
+  .w-item
+    span
+      color: $color-violet
+.color-green
+  .container-button
+    background-color: $color-green
+    &:before
+      background-color: $color-green
+  .w-item
+    span
+      color: $color-green
+.color-red
+  .container-button
+    background-color: $color-red
+    &:before
+      background-color: $color-red
+  .w-item
+    span
+      color: $color-red
+.color-pink
+  .container-button
+    background-color: $color-pink
+    &:before
+      background-color: $color-pink
+  .w-item
+    span
+      color: $color-pink
+
+.color-blue
+  .container-button
+    background-color: $color-blue
+    &:before
+      background-color: $color-blue
+  .w-item
+    span
+      color: $color-blue
+body
+  height: 100vh
+  overflow: hidden
+  background-color: #D4D9ED
+  font-family: 'Roboto', sans-serif
+.w-table
+  display: table
+  width: 100%
+  height: 100%
+.w-table-cell
+  display: table-cell
+  vertical-align: middle
+.w-container
+  position: relative
+  max-width: 100%
+  margin: 30px auto 0
+  font-size: 0
+  text-align: center
+  .w-card
+    cursor: pointer
+    background-color: #fff
+    display: inline-block
+    vertical-align: top
+    width: 300px
+    color: #333
+    font-size: 30px
+    font-weight: 300
+    margin: 0 0 30px
+    @include transition(all 0.3s)
+    .card-header
+      overflow: hidden
+      padding: 20px 0 0
+      .w-title, .w-price
+        position: relative
+        z-index: 2
+      .w-price
+        font-size: 42px
+        font-weight: 500
+        padding: 1px 20px 20px
+    .card-content
+      padding: 20px
+      .w-item
+        font-size: 20px
+        padding: 10px
+        border-bottom: 1px solid #ddd
+        &:last-child
+          border-bottom: none
+        span
+          font-weight: 500
+    .container-button
+      position: relative
+      .w-button
+        position: relative
+        display: block
+        padding: 20px
+        color: #fff
+        font-weight: 400
+        z-index: 2
+        text-decoration: none
+        @include transition(all 0.3s)
+      &:before, &:after
+        content: ""
+        position: absolute
+        top: 0px
+        left: 50%
+        width: 0%
+        height: 0%
+        border-radius: 50%
+        @include transition(all 0.3s)
+      &:after
+        z-index: 1
+        background-color: rgba(255, 255, 255, 0.1)
+        @include transition(all 0.5s)
+      &:hover
+        .w-button
+          padding: 0px 20px 40px
+        &:before
+          top: -200px
+          left: -50px
+          width: 400px
+          height: 400px
+        &:after
+          top: -200px
+          left: -50px
+          width: 400px
+          height: 400px
+    &:hover
+      z-index: 2
+      margin: -20px 0 50px
+      .w-button
+        opacity: 1
+      
